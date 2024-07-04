@@ -1,24 +1,21 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        PhoneBookStart phoneBookStart = new PhoneBookStart();
-        phoneBookStart.start();
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.print("Введите число для вычисления факториала: ");
+        int number = scanner.nextInt();
 
+        try {
+            long factorial = FactorialCalculator.calculateFactorial(number);
+            System.out.println("Факториал числа " + number + " равен " + factorial);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
-        WordCounter wordCounter = new WordCounter();
-        // Создаем массив слов
-        String[] words = {
-                "apple", "banana", "orange", "apple", "kiwi",
-                "banana", "grape", "apple", "orange", "kiwi",
-                "peach", "grape", "melon", "peach", "kiwi"
-        };
-
-        wordCounter.countWords(words);
-
-
+        scanner.close();
     }
-
-
 }
